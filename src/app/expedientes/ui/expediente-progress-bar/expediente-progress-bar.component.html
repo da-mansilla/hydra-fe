@@ -1,17 +1,8 @@
-<ol class="flex items-center w-full">
+<ol class="flex items-center w-full my-8">
 
    
 
     @for (estado of estados; track estado.nombre) {
-
-        @if(estado.isCompleted){
-            @let liStyle="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800 text-blue-600 dark:text-blue-300";
-        }
-        @else {
-            @let liStyle="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800 text-blue-600 dark:text-blue-300";
-
-        }
-                    @let liStyle="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800 text-blue-600 dark:text-blue-300";
 
         <li [ngClass]="{'dark:after:border-blue-800':estado.isCompleted}" class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block">
             <span [ngClass]="{'dark:bg-blue-800':estado.isCompleted,'dark:bg-gray-500':!estado.isCompleted}" class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12  shrink-0">
