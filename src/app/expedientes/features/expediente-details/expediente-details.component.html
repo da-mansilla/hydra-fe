@@ -1,7 +1,7 @@
 <div>
     <app-heading-title [subtitle]="'Numero de Expediente: '+expediente.numeroExpediente" [title]="expediente.nombre"></app-heading-title>
 
-    <a>
+    <a routerLink="status">
         <div class="flex items-center">
             <svg class="w-10 h-10 mt-2 mr-2"  xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>dsad
@@ -12,7 +12,7 @@
         
     </a>
     <app-expediente-progress-bar/>
-    <a>
+    <a routerLink="documentacion">
         <div class="flex items-center">
             <svg class="text-gray-800 w-10 h-10 mt-2 mr-2"  xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>

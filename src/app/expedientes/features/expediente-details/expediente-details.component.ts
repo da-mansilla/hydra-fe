@@ -3,11 +3,12 @@ import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-
 import { ExpedienteProgressBarComponent } from '../../ui/expediente-progress-bar/expediente-progress-bar.component';
 import ExpedienteListComponent from '../expediente-list/expediente-list.component';
 import { ExpedienteTableComponent } from "../../ui/expediente-table/expediente-table.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-expediente-details',
   standalone: true,
-  imports: [HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteListComponent, ExpedienteTableComponent],
+  imports: [RouterLink ,HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteListComponent, ExpedienteTableComponent],
   templateUrl: './expediente-details.component.html',
   styles: ``
 })
