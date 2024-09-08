@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-title.component';
+import { ExpedienteProgressBarComponent } from '../../ui/expediente-progress-bar/expediente-progress-bar.component';
 
 @Component({
   selector: 'app-expediente-details',
   standalone: true,
-  imports: [HeadingTitleComponent],
+  imports: [HeadingTitleComponent,ExpedienteProgressBarComponent],
   templateUrl: './expediente-details.component.html',
   styles: ``
 })
@@ -17,4 +18,5 @@ export default class ExpedienteDetailsComponent {
     numeroExpediente: "A-1234",
     "estado" : "Activo",
   }
+  estados = ["Pendiente","En Evaluacion","Aprobado","Rechazado"];
 }

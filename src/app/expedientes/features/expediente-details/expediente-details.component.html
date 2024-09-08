@@ -1,3 +1,6 @@
 <div>
     <app-heading-title [subtitle]="'Numero de Expediente: '+expediente.numeroExpediente" [title]="expediente.nombre"></app-heading-title>
+
+    <h1 class="my-6 text-5xl font-extrabold leading-none tracking-tight text-gray-900">Estado Actual: <span class="text-blue-600">{{expediente.estado}}</span> </h1>
+    <app-expediente-progress-bar/>
 </div>
