@@ -14,10 +14,10 @@ export default class ExpedienteListComponent {
 
   ESTADOS = ["Pendiente","En Evaluacion","Aprobado","Rechazado"];
   expedientes = [
-    {id:1, nombre:"Juan Perez", estado:"Pendiente" , "numeroExpediente":"A-1234"},
-    {id:2, nombre:"Hernan Sosa", estado:"En Evaluacion", "numeroExpediente":"A-1235"},
-    {id:3, nombre:"Damian Llosa", estado:"Aprobado", "numeroExpediente":"A-1236"},
-    {id:4, nombre:"Ricardo Nieves", estado:"Rechazado", "numeroExpediente":"A-1237"},
+    {id:1, nombre:"Juan Perez", estado:"Pendiente" ,numeroExpediente:"A-1234"},
+    {id:2, nombre:"Hernan Sosa", estado:"En Evaluacion", numeroExpediente:"A-1235"},
+    {id:3, nombre:"Damian Llosa", estado:"Aprobado", numeroExpediente:"A-1236"},
+    {id:4, nombre:"Ricardo Nieves", estado:"Rechazado", numeroExpediente:"A-1237"},
   ];
   expedienteDetails(expedienteID: number) {
 

@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class HeadingTitleComponent {
   @Input() title = 'Heading Title';
+  @Input() subtitle = '';
+
 }
