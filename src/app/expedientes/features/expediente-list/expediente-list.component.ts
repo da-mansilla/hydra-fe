@@ -6,7 +6,7 @@ import { RedirectCommand, Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-expediente-list',
   standalone: true,
-  imports: [HeadingTitleComponent,RouterLink, InputSearchComponent],
+  imports: [HeadingTitleComponent,RouterLink, InputSearchComponent, RouterLink],
   templateUrl: './expediente-list.component.html',
 })
 export default class ExpedienteListComponent {
@@ -22,6 +22,8 @@ export default class ExpedienteListComponent {
   expedienteDetails(expedienteID: number) {
 
     console.log(expedienteID);
+
+
     // Redirigir a la vista de detalles del expediente
     this.router.navigate(['expedientes', expedienteID]);
   }

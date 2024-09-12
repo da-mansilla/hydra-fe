@@ -6,6 +6,10 @@ export default [
     loadComponent: () => import('./features/expediente-list/expediente-list.component'),
   },
   {
+    path: 'new',
+    loadComponent: () => import('./features/expediente-new/expediente-new.component'),
+  },
+  {
     path: ':id',
     loadComponent: () => import('./features/expediente-details/expediente-details.component'),
   },

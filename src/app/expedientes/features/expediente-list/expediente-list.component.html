@@ -1,6 +1,18 @@
 <app-heading-title title="Expedientes" />
 <div class="">
-    <app-input-search />
+    <div class="flex">
+        <div class="flex-1">
+            
+        <app-input-search />
+        </div>
+        <div class="grid-cols-2 mx-10 px-4">
+            <button routerLink="new"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <i class="fas fa-plus"></i> Nuevo Expediente
+            </button >
+            </div>
+       
+    </div>
+    
 
     <div class=" h-full flex overflow-x-auto space-x-12 p-4 py-6 ">
         <!-- Tarjeta 1 -->
