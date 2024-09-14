@@ -8,5 +8,13 @@ export default [
   {
     path: 'expedientes',
     loadComponent: () => import('./features/solicitantes-expedientes/solicitantes-expedientes.component'),
-  }
-]  as Routes;
+  },
+  {
+    path: 'expedientes/:id',
+    loadComponent: () => import('./features/solicitantes-expedientes-detail/solicitantes-expedientes-detail.component'),
+  },
+  {
+    path: 'expedientes/:id/documentacion',
+    loadComponent: () => import('./features/solicitantes-expedientes-documentacion/solicitantes-expedientes-documentacion.component'),
+  },
+]  as Routes;   
