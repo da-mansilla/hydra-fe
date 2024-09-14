@@ -4,6 +4,11 @@
        {
             <app-sidebar />
        }
+
+       @if(showSidebarSolicitante)
+       {
+            <app-sidebar-solicitante />
+       }
       <!-- Sección principal -->
       <main class="flex-1 px-8  ">
             <router-outlet />

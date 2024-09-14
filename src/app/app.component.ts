@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './shared/ui/sidebar/sidebar.component';
 import { filter } from 'rxjs';
+import { SidebarSolicitanteComponent } from './shared/ui/sidebar-solicitante/sidebar-solicitante.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [RouterOutlet, SidebarComponent, SidebarSolicitanteComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -18,12 +19,26 @@ export class AppComponent {
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
     .subscribe((event: NavigationEnd) => {
-      this.showSidebar = event.url !== '/login';
+      if (event.url === '/login') {
+        this.showSidebar = false;
+        this.showSidebarSolicitante = false;
+        return;
+      }
+      if (event.url.includes('solicitantes')) {
+        this.showSidebar = false;
+        this.showSidebarSolicitante = true;
+        return;
+      }else{
+        this.showSidebar = true;
+        this.showSidebarSolicitante = false;
+      }
+      //this.showSidebar = event.url !== '/login';
     });
 
   }
   title = 'hydra-fe';
   showSidebar = true;
+  showSidebarSolicitante = false;
 
 
 }

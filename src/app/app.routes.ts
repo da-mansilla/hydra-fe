@@ -16,6 +16,10 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
+        path: 'solicitantes',
+        loadChildren: () => import('./solicitantes/solicitantes.routes'),
+    },
+    {
         path: '**',
         redirectTo: '',
       },

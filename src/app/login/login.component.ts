@@ -22,7 +22,12 @@ export default class LoginComponent {
       console.log('Login successful');
       
       this.router.navigate(['/home']);
-    }else{
+    }
+    else if(this.mail === 'user' && this.password === 'user'){
+      console.log('Login successful');
+      this.router.navigate(['/solicitantes']);
+    }
+    else{
       console.log('Login failed');
       console.log('Mail: ', this.mail);
       console.log('Password: ', this.password);
