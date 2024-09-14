@@ -1,7 +1,9 @@
 <div class="flex ">
       <!-- Panel lateral izquierdo -->
-      <app-sidebar />
-
+       @if(showSidebar)
+       {
+            <app-sidebar />
+       }
       <!-- Sección principal -->
       <main class="flex-1 px-8  ">
             <router-outlet />
