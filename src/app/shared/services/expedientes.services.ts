@@ -42,7 +42,12 @@ export class ExpedienteService  {
     return this.http.post(`${this.url}/nuevoExpediente`, expediente, { headers: this.headers });
   }
 
-
+  getExpedientesFromSolicitante(id:number){
+    const body = {
+      dni_solicitante: id,
+    }
+    return this.http.post<Expedientes>(`${this.url}/consultarExpedientesDeSolicitante`,body, { headers: this.headers});
+  }
 
 }
 

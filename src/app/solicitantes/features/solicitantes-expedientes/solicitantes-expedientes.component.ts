@@ -1,21 +1,34 @@
 import { Component } from '@angular/core';
 import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-title.component';
 import { Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Expedientes } from '../../../shared/interfaces/expediente.interface';
+import { ExpedienteService } from '../../../shared/services/expedientes.services';
+import { UserService } from '../../../shared/services/users.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-solicitantes-expedientes',
   standalone: true,
-  imports: [HeadingTitleComponent, RouterLink],
+  imports: [HeadingTitleComponent, RouterLink, AsyncPipe],
   templateUrl: './solicitantes-expedientes.component.html',
   styles: ``
 })
 export default class SolicitantesExpedientesComponent {
-  constructor(private router: Router){}
+  public expedientes! : Observable<Expedientes>;
+  private userLogged;
+  public dni;
 
-  expedientes = [
-      {id:1, nombre:"Juan Perez", estado:"Finalizado" ,numeroExpediente:"A-1234"},
-      {id:2, nombre:"Juan Perez", estado:"En Evaluacion", numeroExpediente:"A-1235"},
-  ]
+
+  constructor(private router: Router,private userService: UserService,private expedienteService: ExpedienteService){
+    this.userLogged = this.userService.getUserLogged();
+    this.dni = this.userLogged.dni;
+  }
+
+  ngOnInit(){
+    this.expedientes = this.expedienteService.getExpedientesFromSolicitante(Number(this.dni));
+  }
+  
   expedienteDetails(expedienteID: number) {
 
     console.log(expedienteID);
