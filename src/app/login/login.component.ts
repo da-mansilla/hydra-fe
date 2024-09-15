@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../shared/services/users.service';
+import { Observable } from 'rxjs';
+import { UserLogged } from '../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -10,28 +13,56 @@ import { Router } from '@angular/router';
   styles: ``
 })
 export default class LoginComponent {
-  constructor(private router: Router){
+  public userLogged$! : Observable<UserLogged>;
+  constructor(private router: Router, private userService: UserService) {
 
   }
-  mail = '';
+  dni = '';
   password = '';
 
   onLogin(event: Event) {
     event.preventDefault();
-    if (this.mail === 'admin' && this.password === 'admin') {
-      console.log('Login successful');
+    // User the service to loggin
+    this.userLogged$ = this.userService.login(this.dni, this.password);
+    this.userLogged$.subscribe(user => {
+      console.log('User logged: ', user);
+      if(user.rol === 'Solicitante'){
+        console.log('Login successful');
+        this.userService.setUserLogged(user);
+        this.router.navigate(['/solicitantes']);
+        
+      }
+      else if(user.rol === 'Error'){
+        console.log('Login successful');
+        user = {...user, nombre_usuario:"admintest"}
+        this.userService.setUserLogged(user);
+        this.router.navigate(['/home']);
+        
+      }
+      else{
+        console.log('Login failed');
+        console.log('DNI: ', this.dni);
+        console.log('Password: ', this.password);
+        //this.userService.setUserLogged(user);
+        //this.router.navigate(['/home']);
+        
+      }
+    })
+
+    // if (this.dni === 'admin' && this.password === 'admin') {
+    //   console.log('Login successful');
       
-      this.router.navigate(['/home']);
-    }
-    else if(this.mail === 'user' && this.password === 'user'){
-      console.log('Login successful');
-      this.router.navigate(['/solicitantes']);
-    }
-    else{
-      console.log('Login failed');
-      console.log('Mail: ', this.mail);
-      console.log('Password: ', this.password);
-    }
+    //   this.router.navigate(['/home']);
+    // }
+    // else if(this.dni === 'user' && this.password === 'user'){
+    //   console.log('Login successful');
+    //   this.router.navigate(['/solicitantes']);
+    // }
+    // else{
+    //   console.log('Login failed');
+    //   console.log('DNI: ', this.dni);
+    //   console.log('Password: ', this.password);
+    // }
   }
 
 }
