@@ -4,16 +4,29 @@ import { ExpedienteProgressBarComponent } from '../../ui/expediente-progress-bar
 import ExpedienteListComponent from '../expediente-list/expediente-list.component';
 import { ExpedienteTableComponent } from "../../ui/expediente-table/expediente-table.component";
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ExpedienteService } from '../../../shared/services/expedientes.services';
+import { ExpedienteDetail } from '../../../shared/interfaces/expediente.interface';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-expediente-details',
   standalone: true,
-  imports: [RouterLink ,HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteListComponent, ExpedienteTableComponent],
+  imports: [AsyncPipe,TitleCasePipe,RouterLink ,HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteListComponent, ExpedienteTableComponent],
   templateUrl: './expediente-details.component.html',
   styles: ``
 })
 export default class ExpedienteDetailsComponent {
+  public expediente$! : Observable<ExpedienteDetail>;
   id = input.required<string>();
+
+  constructor(private expedienteService: ExpedienteService){}
+
+  ngOnInit(){
+    this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
+  }
+
+  
   expediente = {
     "id" : this.id,
     "nombre" : "Agustin Mansilla",

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ExpedienteItem, Expedientes } from '../interfaces/expediente.interface';
+import { ExpedienteDetail, ExpedienteItem, Expedientes } from '../interfaces/expediente.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -30,6 +30,14 @@ export class ExpedienteService  {
   
     return this.http.post<Expedientes>(`${this.url}/consultarExpedientes`,body, { headers: this.headers });
   }
+
+  getExpedienteDetail(id: string): Observable<ExpedienteDetail> {
+    const body = {
+        nro_expediente: id
+    }
+    return this.http.post<ExpedienteDetail>(`${this.url}/informacionDeExpediente`,body, { headers: this.headers });
+  }
+
 
 
 }
