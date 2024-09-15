@@ -2,17 +2,40 @@ import { Component } from '@angular/core';
 import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-title.component';
 import { InputSearchComponent } from '../../../shared/ui/input-search/input-search.component';
 import { RedirectCommand, Router, RouterLink } from '@angular/router';
+import { ExpedienteService } from '../../../shared/services/expedientes.services';
+import { ExpedienteItem, Expedientes } from '../../../shared/interfaces/expediente.interface';
+import { Observable } from 'rxjs';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-expediente-list',
   standalone: true,
-  imports: [HeadingTitleComponent,RouterLink, InputSearchComponent, RouterLink],
+  imports: [AsyncPipe,HeadingTitleComponent,RouterLink, InputSearchComponent, RouterLink, TitleCasePipe],
   templateUrl: './expediente-list.component.html',
 })
 export default class ExpedienteListComponent {
-  constructor(private router: Router) {}
+  public exp$! : Observable<Expedientes>;
+  constructor(private router: Router, private expedienteService: ExpedienteService) {
+    
+  }
+  
+  ngOnInit(){
+    this.exp$ = this.expedienteService.getExpedientes();
+    this.expedienteService.getExpedientes().subscribe(()=>{
+      (response: any) => 
+        {
+          //this.exp = response;
+          console.log(response);
+          console.log("algo")
 
-  ESTADOS = ["Pendiente","En Evaluacion","Aprobado","Rechazado"];
+        }
+      (error: any) => console.log(error);
+      
+    })
+  }
+  exp="ds";
+
+  ESTADOS = ["SOLICITADO","EN EVALUACION","APROBADO","RECHAZADO"];
   expedientes = [
     {id:1, nombre:"Juan Perez", estado:"Pendiente" ,numeroExpediente:"A-1234"},
     {id:2, nombre:"Hernan Sosa", estado:"En Evaluacion", numeroExpediente:"A-1235"},

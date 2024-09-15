@@ -1,0 +1,8 @@
+{
+    "/phyapi": {
+      "target": "http://190.52.34.118:8082",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
