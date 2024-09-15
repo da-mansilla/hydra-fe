@@ -21,17 +21,6 @@ export default class ExpedienteListComponent {
   
   ngOnInit(){
     this.exp$ = this.expedienteService.getExpedientes();
-    this.expedienteService.getExpedientes().subscribe(()=>{
-      (response: any) => 
-        {
-          //this.exp = response;
-          console.log(response);
-          console.log("algo")
-
-        }
-      (error: any) => console.log(error);
-      
-    })
   }
   exp="ds";
 
