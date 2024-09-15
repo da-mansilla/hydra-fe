@@ -4,6 +4,7 @@ export interface User{
 }
 
 export interface UserLogged{
+    dni: string;
     nombre_usuario: string;
     rol: string;
 }

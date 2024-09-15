@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ExpedienteDetail, ExpedienteItem, Expedientes } from '../interfaces/expediente.interface';
+import { ExpedienteDetail, ExpedienteItem, ExpedienteNew, Expedientes } from '../interfaces/expediente.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -36,6 +36,10 @@ export class ExpedienteService  {
         nro_expediente: id
     }
     return this.http.post<ExpedienteDetail>(`${this.url}/informacionDeExpediente`,body, { headers: this.headers });
+  }
+
+  createExpediente(expediente: ExpedienteNew){
+    return this.http.post(`${this.url}/nuevoExpediente`, expediente, { headers: this.headers });
   }
 
 

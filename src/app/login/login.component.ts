@@ -27,14 +27,13 @@ export default class LoginComponent {
     this.userLogged$.subscribe(user => {
       console.log('User logged: ', user);
       if(user.rol === 'Solicitante'){
-        console.log('Login successful');
+        user = {...user, dni:this.dni}
         this.userService.setUserLogged(user);
         this.router.navigate(['/solicitantes']);
         
       }
       else if(user.rol === 'Error'){
-        console.log('Login successful');
-        user = {...user, nombre_usuario:"admintest"}
+        user = {...user, nombre_usuario:"admintest", dni:this.dni}
         this.userService.setUserLogged(user);
         this.router.navigate(['/home']);
         

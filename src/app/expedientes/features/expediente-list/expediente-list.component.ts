@@ -24,7 +24,7 @@ export default class ExpedienteListComponent {
   }
   exp="ds";
 
-  ESTADOS = ["SOLICITADO","EN EVALUACION","APROBADO","RECHAZADO"];
+  ESTADOS = ["PENDIENTE","EN EVALUACION","APROBADO","RECHAZADO"];
   expedientes = [
     {id:1, nombre:"Juan Perez", estado:"Pendiente" ,numeroExpediente:"A-1234"},
     {id:2, nombre:"Hernan Sosa", estado:"En Evaluacion", numeroExpediente:"A-1235"},

@@ -1,16 +1,11 @@
-<app-heading-title title="Nuevo Expediente" />
+<app-heading-title title="Nuevo dsaExpediente" />
 
 
 <form class="overflow-auto h-5/6">
     
     
     @if(pagina==1){
-        <div class="flex w-full items-center justify-center align-middle my-8">
-            <div class="w-1/4 ">
-                <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Número de Expediente</label>
-            </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
-        </div>
+        
         <hr/>
         <h1 for="large-input" class="text-gray-900 text-4xl my-5 font-extrabold leading-none tracking-tight">Solicitante</h1>
         <hr/>
@@ -18,31 +13,34 @@
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Apellido y Nombre</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input [(ngModel)]="newExpediente.apellido_nombre_solicitante" name="nombre_solicitante" type="text" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
-        <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="flex w-full items-center justify-center align-middle  my-8">    
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">DNI</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.dni_solicitante" name="dni_solicitante" type="number" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Colegiado</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <select [(ngModel)]="newExpediente.colegiado" name="nro_normativa" class="bg-gray-50 border w-full py-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5">
+                <option value="SI" selected>Si</option>
+                <option value="NO">No</option>
+            </select>
         </div>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Email</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.email_solicitante" name="email_solicitante" type="email" required id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Teléfono</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.telefono_solicitante" name="telefono_solicitante" type="number" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
         <div class="flex justify-end">
             <button (click)="avanzarPagina($event)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -51,44 +49,35 @@
         </div>
     }
     @else if(pagina==2){
-        <div class="flex w-full items-center justify-center align-middle my-8">
-            <div class="w-1/4 ">
-                <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Número de Expediente</label>
-            </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
-        </div>
-        <hr/>
         <h1 for="large-input" class="text-gray-900 text-4xl my-5 font-extrabold leading-none tracking-tight">Obra Particular</h1>
         <hr/>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Nombre Titular de Obra</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.nombre_titular" name="nombre_titular" type="text" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Dirección Obra</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.direccion_obra" name="direccion_obra" type="text" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Padron Catastral</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <input  [(ngModel)]="newExpediente.padron_catastral" name="padron_catastral" type="text" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
-        <div class="flex w-full items-center justify-center align-middle  my-8">
-            <div class="w-1/4 ">
-                <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Estado Construccion</label>
-            </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
-        </div>
+
         <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">Normativa</label>
             </div>
-            <input type="text" id="large-input" class="w-full py-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
+            <select [(ngModel)]="newExpediente.nro_normativa" name="nro_normativa" class="bg-gray-50 border w-full py-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5">
+                <option value="1" selected>Anteproyecto</option>
+                <option value="2">Proyecto</option>
+            </select>
         </div>
         <div class="flex justify-between">
             <button (click)="volverPagina($event)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -115,7 +104,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Número de Expediente</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">A-4548</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight"></h1>
                 </div>
             </div>
             <hr/>
@@ -124,7 +113,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Apellido y Nombre</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">Apellido y Nombre</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.apellido_nombre_solicitante}}</h1>
                 </div>
             </div>
             <hr/>
@@ -133,7 +122,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">DNI</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">42072819</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.dni_solicitante}}</h1>
                 </div>
             </div>
             <hr/>
@@ -142,7 +131,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Colegiado</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">si</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.colegiado}}</h1>
                 </div>
             </div>
             <hr/>
@@ -151,7 +140,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Email</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">mansillagustin&#64;gmail.com</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.email_solicitante}}</h1>
                 </div>
             </div>
             <hr/>
@@ -160,7 +149,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Telefono</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">3886617123</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.telefono_solicitante}}</h1>
                 </div>
             </div>
             <hr/>
@@ -176,7 +165,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Nombre Titular de Obra</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">Juan Perez</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.nombre_titular}}</h1>
                 </div>
             </div>
             <hr/>
@@ -185,7 +174,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Direccion Obra</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">Siempre Viva 123</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.direccion_obra}}</h1>
                 </div>
             </div>
             <hr/>
@@ -194,16 +183,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Padrón Catastral</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">489A58</h1>
-                </div>
-            </div>
-            <hr/>
-            <div class="flex w-full items-center justify-center align-middle  my-8">
-                <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Estado Construccion</h1>
-                </div>
-                <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">No iniciada</h1>
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{newExpediente.padron_catastral}}</h1>
                 </div>
             </div>
             <hr/>
@@ -212,7 +192,8 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Normativa</h1>
                 </div>
                 <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">Anteproyecto</h1>
+                    
+                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{getNombreNormativa(newExpediente.nro_normativa)}}</h1>
                 </div>
             </div>
             <hr/>
