@@ -50,6 +50,10 @@ export class UserService extends BaseService  {
     throw new Error('No user is logged in');
   }
 
+  logout(){
+    localStorage.removeItem('user');
+  }
+
 
 
 }
