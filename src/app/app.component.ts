@@ -13,12 +13,10 @@ import { UserService } from './shared/services/users.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  private userLogged$! : Observable<UserLogged>;
-  constructor(private router:Router, private userService: UserService) {
+  constructor(private router:Router) {
 
   }
   ngOnInit() {
-    this.userService.getUserLogged();
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
     .subscribe((event: NavigationEnd) => {
