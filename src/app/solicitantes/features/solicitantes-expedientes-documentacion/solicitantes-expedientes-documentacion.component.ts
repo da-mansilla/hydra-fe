@@ -16,4 +16,22 @@ export default class SolicitantesExpedientesDocumentacionComponent {
     numeroExpediente: "A-1234",
     "estado" : "Activo",
   }
+  fileName: string = '';
+  fileContent: string = '';
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0]; // Obtenemos el primer archivo cargado
+    
+    if (file) {
+      this.fileName = file.name; // Obtenemos el nombre del archivo
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.fileContent = e.target.result; // Obtenemos el contenido del archivo
+        console.log('Contenido del archivo:', this.fileContent);
+      };
+
+      reader.readAsText(file); // Leemos el archivo como texto
+    }
+  }
 }
