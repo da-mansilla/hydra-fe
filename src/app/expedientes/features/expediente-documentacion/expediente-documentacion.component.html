@@ -1,3 +1,6 @@
+@if(expediente$ | async; as expediente){
+
+<app-heading-title [subtitle]="'Numero de Expediente: '+id()" [title]="expediente.nombre_solicitante"></app-heading-title>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
@@ -53,3 +56,5 @@
         </tbody>
     </table>
 </div>
+
+}
