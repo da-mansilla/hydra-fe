@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
 })
 export default class ExpedienteDocumentacionComponent {
 titulo= 'documento'
-documentos= [{nombre:'Nota de Solicitud de Aprobación', fecha:'string'}, {nombre:'Informe de Registro inmobiliario', fecha:'string2'}, {nombre:'Plano de Arquitectura', fecha:'string2'},  {nombre:'Memoria Técnica Descriptiva', fecha:'string2'}] 
+documentos= [{nombre:'Nota de Solicitud de Aprobación', fecha:'12/09/2024'}, {nombre:'Informe de Registro inmobiliario', fecha:'12/09/2024'}, {nombre:'Plano de Arquitectura', fecha:'14/09/2024'},  {nombre:'Memoria Técnica Descriptiva', fecha:'15/09/2024'}] 
 }
