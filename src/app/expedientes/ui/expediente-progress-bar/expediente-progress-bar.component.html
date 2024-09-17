@@ -1,24 +1,14 @@
 <ol class="flex items-center w-full my-8">
 
-   
 
     @for (estado of estados; track estado.nombre) {
 
-        <li [ngClass]="{'dark:after:border-blue-800':estado.isCompleted}" class="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block">
+        <li [ngClass]="{'dark:after:border-blue-800':estado.isCompleted,'after:w-full after:h-1 after:border-b after:border-4 after:inline-block': estado.nombre !== 'APROBADO'}" class="flex w-full items-center ">
             <span [ngClass]="{'dark:bg-blue-800':estado.isCompleted,'dark:bg-gray-500':!estado.isCompleted}" class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12  shrink-0">
 
-            @if(estado.isCompleted){
-                    <svg class="w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                    </svg>
-                }
             </span>            
 
         </li>
     }
-    <li class="flex items-center w-full">
-        <span class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-500 shrink-0">
-            
-        </span>
-    </li>
+
 </ol>

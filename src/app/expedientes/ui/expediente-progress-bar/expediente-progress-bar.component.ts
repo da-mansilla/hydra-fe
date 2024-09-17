@@ -17,7 +17,7 @@ interface Estado{
   styles: ``
 })
 export class ExpedienteProgressBarComponent {
-  @Input() estado:string= "Pendiente";
+  @Input() estado:string = "";
 
   public estados: Estado[] =[
     {nombre:"PENDIENTE", isCompleted: false},
@@ -28,13 +28,13 @@ export class ExpedienteProgressBarComponent {
   ]
 
   ngOnInit(): void {
-    if(this.estado in this.estados.map(e=>e.nombre)){
     for(let i = 0; i < this.estados.length; i++){
       this.estados[i].isCompleted = true;
-      if (this.estados[i].nombre === this.estado.toUpperCase()){
+      if (this.estados[i].nombre.toUpperCase() === this.estado.toUpperCase()){
         break;
       }
     };
+    console.log(this.estados)
     }
-  }
+  
 }
