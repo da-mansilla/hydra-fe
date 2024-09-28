@@ -1,6 +1,8 @@
 # Etapa 1: Compilar la aplicación Angular
 FROM node:18 as build
 
+RUN npm install -g @angular/cli
+
 # Establece el directorio de trabajo
 WORKDIR /app
 
@@ -14,10 +16,13 @@ RUN npm install
 COPY src .
 
 # Construye la aplicación Angular para producción
-RUN npm run build -- --prod
+RUN npm run build
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
+
+# Copia el archivo nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copia los archivos de la aplicación Angular construida en la imagen Nginx
 COPY --from=build /app/dist/hydra-fe /usr/share/nginx/html
