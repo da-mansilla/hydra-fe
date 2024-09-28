@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExpedienteDetail, ExpedienteEstado, ExpedienteItem, ExpedienteNew, Expedientes } from '../interfaces/expediente.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Documento} from "../interfaces/documentacion.interface";
+import {Documento, Documentos} from "../interfaces/documentacion.interface";
 
 @Injectable({ providedIn: 'root' })
 export class ExpedienteService  {
@@ -69,6 +69,13 @@ export class ExpedienteService  {
       "Documentos": bodyContent
     }
     return this.http.post(`${this.url}/enviarDocumentacion`, body, { headers: this.headers });
+  }
+
+  getDocumentacionExpediente(numeroExpediente: string) : Observable<Documentos> {
+    const body = {
+      "nro_expediente": numeroExpediente
+    }
+    return this.http.post<Documentos>(`${this.url}/listarDocumentacion`, body, { headers: this.headers });
   }
 
 }
