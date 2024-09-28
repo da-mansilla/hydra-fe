@@ -36,7 +36,19 @@ export default class ExpedienteDetailsComponent {
     })
   }
 
-  
+  ngOnUpdate(){
+    this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
+    this.expedientes$ = this.expedienteService.getExpedientes();
+    this.expedientes$.subscribe((expediente) => {
+      expediente.Expedientes.forEach((exp) => {
+        if(exp.nro_expediente == Number(this.id())){
+          this.estado = exp.estado;
+        }
+      })
+    })
+  }
+
+
   expediente = {
     "id" : this.id,
     "nombre" : "Agustin Mansilla",
@@ -46,7 +58,7 @@ export default class ExpedienteDetailsComponent {
   }
   estados = ["PENDIENTE","EN EVALUACION","REVISION DE PLANO","CALCULO ESTRUCTURA","APROBADO"];
 
-  
+
   ultimosMovinientos = [
     {
       nombre:"Avanzó a la etapa de Evaluación",

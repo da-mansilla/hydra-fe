@@ -4,27 +4,54 @@ import { ExpedienteProgressBarComponent } from '../../../expedientes/ui/expedien
 import { ExpedienteTableComponent } from '../../../expedientes/ui/expediente-table/expediente-table.component';
 import {Router, RouterLink} from '@angular/router';
 import { ExpedienteService } from '../../../shared/services/expedientes.services';
-import { ExpedienteDetail } from '../../../shared/interfaces/expediente.interface';
+import {ExpedienteDetail, Expedientes} from '../../../shared/interfaces/expediente.interface';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import {AsyncPipe, TitleCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-solicitantes-expedientes-detail',
   standalone: true,
-  imports: [RouterLink,HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteTableComponent, AsyncPipe],
+  imports: [RouterLink, HeadingTitleComponent, ExpedienteProgressBarComponent, ExpedienteTableComponent, AsyncPipe, TitleCasePipe],
   templateUrl: './solicitantes-expedientes-detail.component.html',
   styles: ``
 })
 export default class SolicitantesExpedientesDetailComponent {
   public expediente$! : Observable<ExpedienteDetail>;
+  public expedientes$! : Observable<Expedientes>;
+  public estado="";
+  public siguienteEstado="";
+  public descripcion=" ";
+  public estados = ["PENDIENTE","EN EVALUACION","REVISION DE PLANO","CALCULO ESTRUCTURA","APROBADO"];
 
   id = input.required<string>();
 
   constructor(private router: Router,private expedienteService: ExpedienteService){}
 
   ngOnInit(){
+
     this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
+    this.expedientes$ = this.expedienteService.getExpedientes();
+    this.expedientes$.subscribe((expediente) => {
+      expediente.Expedientes.forEach((exp) => {
+        if(exp.nro_expediente == Number(this.id())){
+          this.estado = exp.estado;
+        }
+      })
+    })
   }
+
+  ngOnUpdate(){
+    this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
+    this.expedientes$ = this.expedienteService.getExpedientes();
+    this.expedientes$.subscribe((expediente) => {
+      expediente.Expedientes.forEach((exp) => {
+        if(exp.nro_expediente == Number(this.id())){
+          this.estado = exp.estado;
+        }
+      })
+    })
+  }
+
   expediente = {
     "id" : this.id,
     "nombre" : "Juan Perez",
@@ -32,7 +59,7 @@ export default class SolicitantesExpedientesDetailComponent {
     numeroExpediente: "A-1234",
     "estado" : "Activo",
   }
-  estados = ["Pendiente","En Evaluacion","Aprobado","Rechazado"];
+  //estados = ["Pendiente","En Evaluacion","Aprobado","Rechazado"];
   ultimosMovinientos = [
     {
       nombre:"Avanzó a la etapa de Evaluación",

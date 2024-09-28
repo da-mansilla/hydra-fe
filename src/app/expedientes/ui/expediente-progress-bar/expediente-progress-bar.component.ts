@@ -33,8 +33,7 @@ export class ExpedienteProgressBarComponent {
       if (this.estados[i].nombre.toUpperCase() === this.estado.toUpperCase()){
         break;
       }
-    };
-    console.log(this.estados)
+    }
     }
   ngOnChanges(): void{
     for(let i = 0; i < this.estados.length; i++){
@@ -42,7 +41,6 @@ export class ExpedienteProgressBarComponent {
       if (this.estados[i].nombre.toUpperCase() === this.estado.toUpperCase()){
         break;
       }
-    };
-    console.log(this.estados)
+    }
   }
 }

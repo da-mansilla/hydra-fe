@@ -5,10 +5,10 @@
 
             <div class="flex items-center">
 
-                <h1 class="inline-block  my-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900"> Estado Actual: <span class="text-blue-700">{{expediente.estado_construccion}}</span> </h1>
+                <h1 class="inline-block  my-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900"> Estado Actual: <span class="text-blue-700">{{estado | titlecase}}</span> </h1>
             </div>
 
-        <app-expediente-progress-bar/>
+        <app-expediente-progress-bar [estado]="estado"/>
         <a (click)="goExpedienteDocumentacion()">
             <div class="flex items-center">
                 <svg class="text-gray-800 w-10 h-10 mt-2 mr-2"  xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 24 24">
@@ -33,4 +33,4 @@
 
     </div>
 
-})
+}

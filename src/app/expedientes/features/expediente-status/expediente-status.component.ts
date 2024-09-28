@@ -25,7 +25,7 @@ export default class ExpedienteStatusComponent {
   public expedientes$! : Observable<Expedientes>;
   public estado="";
   public siguienteEstado="";
-  public descripcion="";
+  public descripcion=" ";
   public estados = ["PENDIENTE","EN EVALUACION","REVISION DE PLANO","CALCULO ESTRUCTURA","APROBADO"];
 
 
@@ -35,7 +35,20 @@ export default class ExpedienteStatusComponent {
   }
 
   ngOnInit(){
-    
+
+    this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
+    this.expedientes$ = this.expedienteService.getExpedientes();
+    this.expedientes$.subscribe((expediente) => {
+      expediente.Expedientes.forEach((exp) => {
+        if(exp.nro_expediente == Number(this.id())){
+          this.estado = exp.estado;
+          this.siguienteEstado = this.getSiguienteEstado(this.estado);
+        }
+      })
+    })
+  }
+
+  ngOnUpdate(){
     this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
     this.expedientes$ = this.expedienteService.getExpedientes();
     this.expedientes$.subscribe((expediente) => {
