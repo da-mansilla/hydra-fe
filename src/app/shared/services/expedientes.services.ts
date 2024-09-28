@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ExpedienteDetail, ExpedienteEstado, ExpedienteItem, ExpedienteNew, Expedientes } from '../interfaces/expediente.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Documento} from "../interfaces/documentacion.interface";
 
 @Injectable({ providedIn: 'root' })
 export class ExpedienteService  {
@@ -27,7 +28,7 @@ export class ExpedienteService  {
         nro_expediente: 0,
         estado: ""
       };
-  
+
     return this.http.post<Expedientes>(`${this.url}/consultarExpedientes`,body, { headers: this.headers });
   }
 
@@ -52,6 +53,22 @@ export class ExpedienteService  {
 
   updateExpedienteEstado(expedienteEstado: ExpedienteEstado){
     return this.http.post(`${this.url}/cambiarEstodoExpediente`, expedienteEstado, { headers: this.headers });
+  }
+
+  createDocumentacionExpediente(numeroExpediente: number,documentacion: Documento[]) {
+
+    const bodyContent = documentacion.map(doc => {
+      return {
+        "Base64": "",
+        "nombre_documentacion": doc.nombre,
+        "tipo_documentacion": "Archivo"
+      }
+    })
+    const body= {
+      "nro_expediente": numeroExpediente,
+      "Documentos": bodyContent
+    }
+    return this.http.post(`${this.url}/enviarDocumentacion`, body, { headers: this.headers });
   }
 
 }

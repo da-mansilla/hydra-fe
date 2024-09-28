@@ -14,7 +14,7 @@ export default [
     loadComponent: () => import('./features/solicitantes-expedientes-detail/solicitantes-expedientes-detail.component'),
   },
   {
-    path: 'expedientes/:id/documentacion',
+    path: 'expedientes/documentacion/:id',
     loadComponent: () => import('./features/solicitantes-expedientes-documentacion/solicitantes-expedientes-documentacion.component'),
   },
-]  as Routes;   
+]  as Routes;

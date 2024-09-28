@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-title.component';
 import { ExpedienteProgressBarComponent } from '../../../expedientes/ui/expediente-progress-bar/expediente-progress-bar.component';
 import { ExpedienteTableComponent } from '../../../expedientes/ui/expediente-table/expediente-table.component';
-import { RouterLink } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { ExpedienteService } from '../../../shared/services/expedientes.services';
 import { ExpedienteDetail } from '../../../shared/interfaces/expediente.interface';
 import { Observable } from 'rxjs';
@@ -20,7 +20,7 @@ export default class SolicitantesExpedientesDetailComponent {
 
   id = input.required<string>();
 
-  constructor(private expedienteService: ExpedienteService){}
+  constructor(private router: Router,private expedienteService: ExpedienteService){}
 
   ngOnInit(){
     this.expediente$ = this.expedienteService.getExpedienteDetail(this.id());
@@ -45,4 +45,8 @@ export default class SolicitantesExpedientesDetailComponent {
       revisadoPor: "Juan Perez"
     }
   ]
+
+  goExpedienteDocumentacion(){
+    this.router.navigate(['solicitantes/expedientes/documentacion', this.id()]);
+  }
 }
