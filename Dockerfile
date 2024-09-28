@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copia el código fuente de la aplicación
-COPY . .
+COPY src .
 
 # Construye la aplicación Angular para producción
 RUN npm run build -- --prod
