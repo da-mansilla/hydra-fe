@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ExpedienteDetail, ExpedienteItem, ExpedienteNew, Expedientes } from '../interfaces/expediente.interface';
+import { ExpedienteDetail, ExpedienteEstado, ExpedienteItem, ExpedienteNew, Expedientes } from '../interfaces/expediente.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -47,6 +47,11 @@ export class ExpedienteService  {
       dni_solicitante: id,
     }
     return this.http.post<Expedientes>(`${this.url}/consultarExpedientesDeSolicitante`,body, { headers: this.headers});
+  }
+
+
+  updateExpedienteEstado(expedienteEstado: ExpedienteEstado){
+    return this.http.post(`${this.url}/cambiarEstodoExpediente`, expedienteEstado, { headers: this.headers });
   }
 
 }

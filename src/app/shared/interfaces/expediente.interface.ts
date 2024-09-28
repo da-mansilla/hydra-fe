@@ -44,3 +44,10 @@ export interface ExpedienteNew{
 export interface ExpedienteNewResponse{
     nro_expediente : number
 }
+
+export interface ExpedienteEstado{
+    nro_expediente: string;
+    estado: string;
+    descripcion_seguimiento: string;
+    dni_usuario: string;
+}

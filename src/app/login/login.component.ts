@@ -32,7 +32,7 @@ export default class LoginComponent {
         this.router.navigate(['/solicitantes']);
         
       }
-      else if(user.rol === 'Error'){
+      else if(user.rol === 'Error' || user.rol === "Empleado"){
         user = {...user, nombre_usuario:"admintest", dni:this.dni}
         this.userService.setUserLogged(user);
         this.router.navigate(['/home']);

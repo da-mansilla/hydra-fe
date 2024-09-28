@@ -11,11 +11,14 @@
             </div>
             <input (change)="onFileSelected($event)" id="dropzone-file" type="file" class="hidden" />
         </label>
-    </div> 
+    </div>
 
-    
+
 
 <div class="relative overflow-x-auto my-10">
+    @if (documentos.length > 0) {
+
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
@@ -25,29 +28,31 @@
                 <th scope="col" class="px-6 py-3">
                     Fecha
                 </th>
-            
+
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Nota de Solicitud
-                </th>
-                <td class="px-6 py-4">
-                    10/09/2024
-                </td>
-            </tr>
-            <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Plano de Luz
-                </th>
-                <td class="px-6 py-4">
-                    10/09/2024
-                </td>
-            </tr>
-          
+            @for (documento of documentos; track documento.nombre) {
+
+
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        {{documento.nombre}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{documento.fecha}}
+                    </td>
+                </tr>
+            }
+
+
         </tbody>
     </table>
+    <div class="flex justify-end">
+        <button (click)="onSave()"  class="mx-5 px-4 py-2 mt-4 text-white bg-blue-500 rounded-lg">Guardar</button>
+        <button  class="mx-5 px-4 py-2 mt-4 text-white bg-green-500 rounded-lg">Enviar</button>
+    </div>
+    }
 </div>
 
 </div>
