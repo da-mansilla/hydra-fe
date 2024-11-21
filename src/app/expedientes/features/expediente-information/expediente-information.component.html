@@ -1,0 +1,121 @@
+@if(expediente$ | async; as expediente){
+<app-heading-title [subtitle]="'Numero de Expediente: '+id()" [title]="expediente.nombre_titular"></app-heading-title>
+
+<div class=" overflow-auto p-4 h-3/6">
+    
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Apellido y Nombre</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.nombre_titular}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <!-- <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">DNI</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.}}</h1>
+        </div>
+    </div> -->
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Colegiado</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.colegiado}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Fecha de Alta del Expediente</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.fecha_alta_expediente}}</h1>
+        </div>
+    </div>
+    <hr/>
+   <!--  <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Email</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.}}</h1>
+        </div>
+    </div> -->
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Telefono</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">3886617123</h1>
+        </div>
+    </div>
+    <hr/>
+    
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Nombre Titular de Obra</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.nombre_solicitante}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Direccion Obra</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.direccion_obra}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Tipo de Obra</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.tipo_obra}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Estado Construcción</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.estado_construccion}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Padrón Catastral</h1>
+        </div>
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{expediente.padron_catastral}}</h1>
+        </div>
+    </div>
+    <hr/>
+    <!-- <div class="flex w-full items-center justify-center align-middle  my-8">
+        <div class="w-1/2 ">
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Normativa</h1>
+        </div>
+        <div class="w-1/2 ">
+
+            <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{getNombreNormativa(expediente.nro_normativa)}}</h1>
+        </div>
+    </div> -->
+    <hr/>
+</div>
+
+
+}

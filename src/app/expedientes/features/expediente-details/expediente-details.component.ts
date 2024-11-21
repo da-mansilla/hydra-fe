@@ -61,14 +61,9 @@ export default class ExpedienteDetailsComponent {
 
   ultimosMovinientos = [
     {
-      nombre:"Avanzó a la etapa de Evaluación",
-      fecha: "08/9/2024",
-      revisadoPor: "Juan Perez"
-    },
-    {
       nombre:"Se inició el expediente",
-      fecha: "08/9/2024",
-      revisadoPor: "Juan Perez"
+      fecha: "29/9/2024",
+      revisadoPor: "Rosario Cruz"
     }
   ]
 }

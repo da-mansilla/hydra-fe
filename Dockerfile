@@ -13,7 +13,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copia el código fuente de la aplicación
-COPY src .
+COPY . .
 
 # Construye la aplicación Angular para producción
 RUN npm run build
@@ -25,7 +25,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copia los archivos de la aplicación Angular construida en la imagen Nginx
-COPY --from=build /app/dist/hydra-fe /usr/share/nginx/html
+COPY --from=build /app/dist/hydra-fe/browser /usr/share/nginx/html
 
 # Expone el puerto en el que correrá la aplicación
 EXPOSE 80

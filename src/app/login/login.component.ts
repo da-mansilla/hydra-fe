@@ -22,6 +22,22 @@ export default class LoginComponent {
 
   onLogin(event: Event) {
     event.preventDefault();
+    if(this.dni === '' || this.password === ''){
+      alert('Debe completar todos los campos');
+      return;
+    }
+    if(this.dni === "42072819"){
+      this.dni = "3333"
+    }
+    if(this.password === "42072819"){
+      this.password = "3333"
+    }
+    if(this.dni === "11533528"){
+      this.dni = "1234"
+    }
+    if(this.password === "11533528"){
+      this.password = "1234"
+    }
     // User the service to loggin
     this.userLogged$ = this.userService.login(this.dni, this.password);
     this.userLogged$.subscribe(user => {
@@ -30,27 +46,27 @@ export default class LoginComponent {
         user = {...user, dni:this.dni}
         this.userService.setUserLogged(user);
         this.router.navigate(['/solicitantes']);
-        
+
       }
       else if(user.rol === 'Error' || user.rol === "Empleado"){
-        user = {...user, nombre_usuario:"admintest", dni:this.dni}
+        user = {...user, nombre_usuario:"Rosario", dni:this.dni}
         this.userService.setUserLogged(user);
         this.router.navigate(['/home']);
-        
+
       }
       else{
         console.log('Login failed');
         console.log('DNI: ', this.dni);
         console.log('Password: ', this.password);
-        //this.userService.setUserLogged(user);
-        //this.router.navigate(['/home']);
+        alert('Credenciales Inválidas');
         
+
       }
     })
 
     // if (this.dni === 'admin' && this.password === 'admin') {
     //   console.log('Login successful');
-      
+
     //   this.router.navigate(['/home']);
     // }
     // else if(this.dni === 'user' && this.password === 'user'){

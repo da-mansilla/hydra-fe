@@ -1,7 +1,7 @@
 @if(expediente$ | async; as expediente){
 
     <div>
-        <app-heading-title [subtitle]="'Numero de Expediente: '+id()" [title]="expediente.nombre_solicitante"></app-heading-title>
+        <app-heading-title [subtitle]="'Numero de Expediente: '+id()" [title]="expediente.nombre_titular"></app-heading-title>
 
             <div class="flex items-center">
 
@@ -9,6 +9,15 @@
             </div>
 
         <app-expediente-progress-bar [estado]="estado"/>
+
+        <a routerLink="information">
+            <div class="flex items-center">
+                <svg class="text-gray-800 w-10 h-10 mt-2 mr-2"  xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                </svg>
+                <h1 class="inline-block my-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900"> <span class="underline underline-offset-3 decoration-4 decoration-gray-400 dark:decoration-gray-600">Ver Informacion </span></h1>
+            </div>
+        </a>
         <a (click)="goExpedienteDocumentacion()">
             <div class="flex items-center">
                 <svg class="text-gray-800 w-10 h-10 mt-2 mr-2"  xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 24 24">

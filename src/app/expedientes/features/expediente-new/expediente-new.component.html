@@ -2,10 +2,10 @@
 
 
 <form class="overflow-auto h-5/6">
-    
-    
+
+
     @if(pagina==1){
-        
+
         <hr/>
         <h1 for="large-input" class="text-gray-900 text-4xl my-5 font-extrabold leading-none tracking-tight">Solicitante</h1>
         <hr/>
@@ -15,7 +15,7 @@
             </div>
             <input [(ngModel)]="newExpediente.apellido_nombre_solicitante" name="nombre_solicitante" type="text" id="large-input" class="w-full py-2 px-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 ">
         </div>
-        <div class="flex w-full items-center justify-center align-middle  my-8">    
+        <div class="flex w-full items-center justify-center align-middle  my-8">
             <div class="w-1/4 ">
                 <label for="large-input" class="text-center text-gray-900 text-3xl font-bold leading-none tracking-tight">DNI</label>
             </div>
@@ -96,16 +96,7 @@
                 <div class="w-1/2 ">
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Solicitante</h1>
                 </div>
-                
-            </div>
-            <hr/>
-            <div class="flex w-full items-center justify-center align-middle  my-8">
-                <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Número de Expediente</h1>
-                </div>
-                <div class="w-1/2 ">
-                    <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight"></h1>
-                </div>
+
             </div>
             <hr/>
             <div class="flex w-full items-center justify-center align-middle  my-8">
@@ -157,7 +148,7 @@
                 <div class="w-1/2 ">
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Obra Particular</h1>
                 </div>
-                
+
             </div>
             <hr/>
             <div class="flex w-full items-center justify-center align-middle  my-8">
@@ -192,7 +183,7 @@
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-extrabold leading-none tracking-tight">Normativa</h1>
                 </div>
                 <div class="w-1/2 ">
-                    
+
                     <h1 for="large-input" class="text-center text-gray-900 text-3xl font-thin leading-none tracking-tight">{{getNombreNormativa(newExpediente.nro_normativa)}}</h1>
                 </div>
             </div>

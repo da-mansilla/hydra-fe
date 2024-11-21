@@ -28,6 +28,9 @@ export class ExpedienteProgressBarComponent {
   ]
 
   ngOnInit(): void {
+    this.estados.forEach(estado => {
+      estado.isCompleted = false;
+    });
     for(let i = 0; i < this.estados.length; i++){
       this.estados[i].isCompleted = true;
       if (this.estados[i].nombre.toUpperCase() === this.estado.toUpperCase()){
@@ -36,11 +39,16 @@ export class ExpedienteProgressBarComponent {
     }
     }
   ngOnChanges(): void{
+    this.estados.forEach(estado => {
+      estado.isCompleted = false;
+    });
+    console.log("Estado: ", this.estado);
     for(let i = 0; i < this.estados.length; i++){
       this.estados[i].isCompleted = true;
       if (this.estados[i].nombre.toUpperCase() === this.estado.toUpperCase()){
         break;
       }
     }
+    console.log(this.estados);
   }
 }

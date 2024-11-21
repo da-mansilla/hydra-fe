@@ -23,7 +23,7 @@
                 <hr class="mb-4 border-gray-100 border-2">
                 <div class="flex flex-col items-center justify-center">
                     @if(exp$ | async; as result){
-                        @for (expediente of result.Expedientes; track expediente.nro_expediente) {
+                        @for (expediente of expedientesMostrar; track expediente.nro_expediente) {
                             @if (expediente.estado.toLowerCase() === estado.toLowerCase()){
                                 <a (routerLink)="['/expediente',expediente.nro_expediente]"  (click)="expedienteDetails(expediente.nro_expediente)" class="w-full m-0 p-0">
                                     <div class="my-5 cursor-pointer hover:bg-gray-100 flex flex-col items-center justify-center flex-shrink-0  bg-white shadow-md rounded-lg py-2 border-white">

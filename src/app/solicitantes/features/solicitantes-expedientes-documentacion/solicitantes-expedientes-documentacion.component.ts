@@ -53,6 +53,12 @@ export default class SolicitantesExpedientesDocumentacionComponent {
   }
 
   onFileSelected(event: any): void {
+    // Verificar que la extension sea pdf, txt, docx o jpg
+    const extension = this.fileName.split('.').pop();
+    if (extension != 'pdf' && extension != 'txt' && extension != 'docx' && extension != 'jpg') {
+      alert('Solo se permiten archivos pdf o txt');
+      return;
+    }
     const file: File = event.target.files[0]; // Obtenemos el primer archivo cargado
 
     if (file) {
@@ -71,6 +77,12 @@ export default class SolicitantesExpedientesDocumentacionComponent {
   }
 
   onSave() {
+    // Verificar que la extension sea pdf, txt, docx o jpg
+    const extension = this.fileName.split('.').pop();
+    if (extension != 'pdf' && extension != 'txt' && extension != 'docx' && extension != 'jpg') {
+      alert('Solo se permiten archivos pdf o txt');
+      return;
+    }
     // Guardar en Local Storage todos los documentos
     localStorage.setItem('documentos', JSON.stringify({"id":this.id(),"documentos":this.documentos}));
     // Alerta
@@ -78,7 +90,12 @@ export default class SolicitantesExpedientesDocumentacionComponent {
   }
 
   onEnviar(){
-
+    // Verificar que la extension sea pdf, txt, docx o jpg
+    const extension = this.fileName.split('.').pop();
+    if (extension != 'pdf' && extension != 'txt' && extension != 'docx' && extension != 'jpg') {
+      alert('Solo se permiten archivos pdf o txt');
+      return;
+    }
     const response = this.expedienteService.createDocumentacionExpediente(Number(this.id()), this.documentos);
     if(response){
       response.subscribe((data) => {

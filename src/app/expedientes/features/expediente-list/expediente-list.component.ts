@@ -15,14 +15,37 @@ import { AsyncPipe, TitleCasePipe } from '@angular/common';
 })
 export default class ExpedienteListComponent {
   public exp$! : Observable<Expedientes>;
+  public expedientesInicial! : Observable<Expedientes>;
+  public expedientesMostrar: ExpedienteItem[] = [];
   constructor(private router: Router, private expedienteService: ExpedienteService) {
     
   }
   
   ngOnInit(){
+    console.log("hola")
+    this.expedientesInicial = this.expedienteService.getExpedientes();
+    // Iterar sobre los expedientes
+    this.expedientesInicial.subscribe(expedientes => {
+      expedientes.Expedientes.forEach(expediente => {
+        const expedienteDetails = this.expedienteService.getExpedienteDetail(expediente.nro_expediente.toString());
+        expedienteDetails.subscribe(expedienteDetail => {
+          this.expedientesMostrar.push({
+            nombre_solicitante: expedienteDetail.nombre_titular,
+            estado: expediente.estado,
+            nro_expediente: expediente.nro_expediente
+          });
+          console.log(this.expedientesMostrar);
+          
+        });
+      })
+    });
+
+    console.log(this.expedientesMostrar);
     this.exp$ = this.expedienteService.getExpedientes();
+
   }
   exp="ds";
+  
 
   ESTADOS = ["PENDIENTE","EN EVALUACION","REVISION DE PLANO","CALCULO ESTRUCTURA","APROBADO"];
 

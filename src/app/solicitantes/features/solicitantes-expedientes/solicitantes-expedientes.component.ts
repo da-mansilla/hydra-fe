@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeadingTitleComponent } from '../../../shared/ui/heading-title/heading-title.component';
 import { Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Expedientes } from '../../../shared/interfaces/expediente.interface';
+import { ExpedienteItem, Expedientes } from '../../../shared/interfaces/expediente.interface';
 import { ExpedienteService } from '../../../shared/services/expedientes.services';
 import { UserService } from '../../../shared/services/users.service';
 import { AsyncPipe } from '@angular/common';
@@ -16,6 +16,8 @@ import { AsyncPipe } from '@angular/common';
 })
 export default class SolicitantesExpedientesComponent {
   public expedientes! : Observable<Expedientes>;
+  public expedientesInicial! : Observable<Expedientes>;
+  public expedientesMostrar : ExpedienteItem[] = [];
   private userLogged;
   public dni;
 
@@ -26,6 +28,22 @@ export default class SolicitantesExpedientesComponent {
   }
 
   ngOnInit(){
+    this.expedientesInicial = this.expedienteService.getExpedientesFromSolicitante(Number(this.dni));
+    // Iterar sobre los expedientes
+    this.expedientesInicial.subscribe(expedientes => {
+      expedientes.Expedientes.forEach(expediente => {
+        const expedienteDetails = this.expedienteService.getExpedienteDetail(expediente.nro_expediente.toString());
+        expedienteDetails.subscribe(expedienteDetail => {
+          this.expedientesMostrar.push({
+            nombre_solicitante: expedienteDetail.nombre_titular,
+            estado: expediente.estado,
+            nro_expediente: expediente.nro_expediente
+          });
+          console.log(this.expedientesMostrar);
+          
+        });
+      })
+    });
     this.expedientes = this.expedienteService.getExpedientesFromSolicitante(Number(this.dni));
   }
   

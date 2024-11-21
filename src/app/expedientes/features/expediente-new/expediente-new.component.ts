@@ -24,7 +24,7 @@ export default class ExpedienteNewComponent {
     "email_solicitante" : 'agustin@gmail.com',
     "colegiado" : 'SI',
     "telefono_solicitante" : '3887718123',
-    "nombre_titular" : 'Hector Piazzola',
+    "nombre_titular" : 'Luciano Garcia',
     "direccion_obra" : 'Granadas 345',
     "padron_catastral"  : 'A-308',
     "nro_normativa" : 1,
